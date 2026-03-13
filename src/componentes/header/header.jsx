@@ -1,7 +1,16 @@
 import "./header.css";
 import logo from "../../assets/logo_pequeño.png";
 
+import 'primeicons/primeicons.css';
+        
+import { useNavigate } from "react-router-dom";
+
 function Header({ setVista }) {
+
+  const navigate = useNavigate();
+  const handleLogin = () => {
+    navigate("/login");
+  };
 
   return (
     <header className="header">
@@ -36,8 +45,8 @@ function Header({ setVista }) {
           ACTORES
         </p>
       </nav>
-      <div className="user">
-        👤
+      <div onClick={handleLogin} className="user">
+        <i className="pi pi-user"></i>
       </div>
     </header>
   )

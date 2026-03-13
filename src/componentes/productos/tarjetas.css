@@ -1,0 +1,22 @@
+.scroll-container{
+  margin-top: 10px;
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.card{
+  min-width: 300px;
+  flex: 0 0;
+}
+
+.card img{
+  width: 100%;
+  border-radius: 10px;
+}
+
+h4{
+  text-align: center;
+  margin-top: 5px;
+  color:white;
+}
