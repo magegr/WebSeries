@@ -1,11 +1,5 @@
-.principal {
-  display: flex;
-  overflow-x: auto;
-  gap: 1rem;
-  padding: 1rem;
-  background-color: #490e51;
-}
 .marcadores{
-  margin-left: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  padding-left: 1rem;
 }

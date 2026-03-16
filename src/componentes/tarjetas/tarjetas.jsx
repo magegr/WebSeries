@@ -19,15 +19,15 @@ function Cards({ data }) {
     }
     
     return (
-      <>
-      <div className="cards">
+      <div className="cards" tabIndex="0">{/*Accesibilidad : uso para personas que van con teclado se puede ver usando el Tab*/}
+      <div className="images">
         <img
           src={`https://image.tmdb.org/t/p/w500${imagenFinal}`}
           alt={title || name}
         />
       </div>
       <h4>{title || name}</h4>
-    </>
+    </div>
     );
   };
 
