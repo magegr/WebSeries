@@ -1,5 +1,5 @@
 import { ScrollPanel } from "primereact/scrollpanel";
-import "./tarjetas.css";
+import "./carrusel.css";
 
 function Card({ data }) {
 

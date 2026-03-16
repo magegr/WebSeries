@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getTopPeliculas } from "../../services/apiTmdb";
-import Card from "../../componentes/productos/tarjetas";
+import Card from "../../componentes/tarjetaCarrusel/tarjetas";
 import './principal.css'
 
 function Principal() {
@@ -23,7 +23,7 @@ function Principal() {
   return (
     <>
       <h2 className="marcadores">🔥 MÁS POPULARES</h2>
-      <div className="container">
+      <div className="principal">
         <Card data={peliculas} />
       </div>
    </>
