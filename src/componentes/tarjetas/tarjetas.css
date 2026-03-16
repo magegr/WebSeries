@@ -1,9 +1,9 @@
 .cards{
-  min-height: 200px;
+  min-height: 300px;
   border-radius: 8px;
 }
 .images{
-  min-width: 100px;
+  min-width: 200px;
   position: relative;
 
 }
@@ -20,7 +20,7 @@
   z-index: 10;
   box-shadow: 0 10px 30px rgba(90, 85, 85, 0.658);
   position: relative;
-  transform: scale(1.20);
+  transform: scale(1.10);
 }
 
 /*Para personas que llevan un teclado*/

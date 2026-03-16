@@ -5,7 +5,7 @@ function Cards({ data }) {
   const gridItem = (producto) => {
 
     const title = producto.title;
-    const image = producto.backdrop_path;
+    const image = producto.poster_path;
 
     const name=producto.name;
     const imageActors=producto.profile_path;
@@ -19,7 +19,7 @@ function Cards({ data }) {
     }
     
     return (
-      <div className="cards" tabIndex="0">{/*Accesibilidad : uso para personas que van con teclado se puede ver usando el Tab*/}
+      <div className="cards" tabIndex="0">{/*Accesibilidad : uso para personas que van con teclado se puede ver usando el*/}
       <div className="images">
         <img
           src={`https://image.tmdb.org/t/p/w500${imagenFinal}`}

@@ -1,15 +1,57 @@
 .card{
-  min-width: 300px;
-  flex: 0 0;
+  width:200px;
+  margin:auto;
+  position: relative 
 }
 
 .card img{
-  width: 100%;
   border-radius: 10px;
+  width: 100%;
 }
 
-h4{
-  text-align: center;
-  margin-top: 5px;
+
+.card h3{
+  text-align:center;
+  margin-top:8px;
+  font-size:15px;
   color:white;
 }
+
+.card p{
+  text-align:center;
+  color:#aaa;
+  font-size:13px;
+  margin-bottom: 30px;
+}
+
+
+.carrusel{
+  position: relative;
+}
+
+
+.carrusel::after{
+  content:"";
+  position:absolute;
+  top:0;
+  right:0;
+  width:120px;
+  height:100%;
+  z-index:2;
+  pointer-events:none;
+  background: linear-gradient(to left, #0b1240, transparent);
+}
+
+.rating{
+  position:absolute;
+  top:20px;
+  right:8px;
+  background:rgba(0,0,0,0.7);
+  padding:4px 8px;
+  border-radius:8px;
+  font-size:13px;
+  color:#ffd700;
+  font-weight:bold;
+}
+
+
