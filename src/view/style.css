@@ -11,7 +11,7 @@
 }
 .seccion{
   display: grid;
-  grid-template-columns: repeat(5, 260px);
+  grid-template-columns: repeat(5, auto);
   gap: 2rem;
 }
 .seccion img{
