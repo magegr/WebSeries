@@ -35,8 +35,8 @@ function Header({ setVista }) {
           <span>SERIES</span>
           <div className="dropdown-menu">
             <p onClick={()=>setVista("serie-accion")}>ACCION</p>
-            <p onClick={()=>setVista("serie-miedo")}>MIEDO</p>
-            <p onClick={()=>setVista("serie-romance")}>ROMANCE</p>
+            <p onClick={()=>setVista("serie-misterio")}>MISTERIO</p>
+            <p onClick={()=>setVista("serie-animacion")}>ANIMACION</p>
             <p onClick={()=>setVista("serie-ficcion")}>FICCION</p>
           </div>
         </div>

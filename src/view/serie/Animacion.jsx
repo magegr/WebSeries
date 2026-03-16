@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
-import { getSeriesAccion } from "../../services/apiTmdb";
+import { getSeriesAnimacion } from "../../services/apiTmdb";
 import Cards from "../../componentes/tarjetas/tarjetas";
 import '../style.css'
 
-function SerieAccion() {
+function SerieAnimacion() {
 
-  const [accion, setAccion] = useState([]);
+  const [animacion, setAnimacion] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const cargarSeries = async () => {
-      const data = await getSeriesAccion();
-      setAccion(data);
+      const data = await getSeriesAnimacion();
+      setAnimacion(data);
       setLoading(false);
     };
 
@@ -23,13 +23,13 @@ function SerieAccion() {
   return (
 
   <div className="view">
-    <h2 className="titulo-seccion">💥 SERIES DE ACCIÓN</h2>
+    <h2 className="titulo-seccion">🌹 SERIES DE ANIMACION</h2>
 
     <div className="seccion">
-      <Cards data={accion} />
+      <Cards data={animacion} />
     </div>
   </div>
 )
 }
 
-export default SerieAccion;
+export default SerieAnimacion;

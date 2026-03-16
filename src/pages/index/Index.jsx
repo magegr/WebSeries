@@ -10,8 +10,8 @@ import PeliculaRomance from "../../view/peliculas/Romance";
 import PeliculaFiccion from "../../view/peliculas/Ficcion";
 
 import SerieAccion from "../../view/serie/Accion";
-import SerieMiedo from "../../view/serie/Miedo";
-import SerieRomance from "../../view/serie/Romance";
+import SerieMisterio from "../../view/serie/Misterio";
+import SerieAnimacion from "../../view/serie/Animacion";
 import SerieFiccion from "../../view/serie/Ficcion";
 
 import Actors from "../../view/actores/Actors";
@@ -42,11 +42,11 @@ function Index() {
       case "serie-accion":
         return <SerieAccion />
 
-      case "serie-miedo":
-        return <SerieMiedo />
+      case "serie-misterio":
+        return <SerieMisterio />
 
-      case "serie-romance":
-        return <SerieRomance />
+      case "serie-animacion":
+        return <SerieAnimacion />
 
       case "serie-ficcion":
         return <SerieFiccion />

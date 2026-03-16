@@ -45,14 +45,14 @@ export const getSeriesAccion = async () => {
   return data.results;
 };
 
-export const getSeriesTerror = async () => {
-  const res = await fetch(`${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=27`);
+export const getSeriesMisterio = async () => {
+  const res = await fetch(`${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=9648`);
   const data = await res.json();
   return data.results;
 };
 
-export const getSeriesRomance = async () => {
-  const res = await fetch(`${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=10749`);
+export const getSeriesAnimacion = async () => {
+  const res = await fetch(`${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=16`);
   const data = await res.json();
   return data.results;
 };
