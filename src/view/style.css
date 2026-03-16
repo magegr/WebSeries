@@ -24,3 +24,10 @@
 .seccion img:hover{
   transform: scale(1.05);
 }
+
+
+.cargando{
+  display: grid;
+  grid-template-columns: repeat(5, 260px);
+  gap: 2rem;
+}

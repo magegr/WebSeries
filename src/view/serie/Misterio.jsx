@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getSeriesMisterio } from "../../services/apiTmdb";
 import Cards from "../../componentes/tarjetas/tarjetas";
+import { Skeleton } from "primereact/skeleton";
 import '../style.css'
 
 function SerieMisterio() {
@@ -18,7 +19,22 @@ function SerieMisterio() {
     cargarSeries();
   }, []);
 
-  if (loading) return <p>Cargando...</p>;
+  
+  if (loading) {
+    
+    return (
+      <div className="view">
+        <Skeleton width="30%" height="50px" className="m-4" borderRadius="12px" />
+        <div className="cargando">
+          {Array.from({ length: 20 }).map((value, i) => (
+              <div key={i}>
+                <Skeleton width="250px" height="180px" borderRadius="12px" className="m-4"/>
+              </div>
+          ))}
+        </div>
+      </div>
+    )
+  } 
 
   return (
 

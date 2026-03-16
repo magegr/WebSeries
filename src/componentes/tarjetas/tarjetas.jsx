@@ -10,15 +10,14 @@ function Cards({ data }) {
     const name=producto.name;
     const imageActors=producto.profile_path;
 
-
     let imagenFinal = "";
-
+    
     if (image === null || image === undefined || image === "") {
       imagenFinal = imageActors;
     } else {
       imagenFinal = image;
     }
-
+    
     return (
       <>
       <div className="cards">
