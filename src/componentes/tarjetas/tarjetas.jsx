@@ -6,12 +6,19 @@ function Cards({ data }) {
 
     const title = producto.title;
     const image = producto.poster_path;
-
+    const rating= producto.vote_average
     const name=producto.name;
     const imageActors=producto.profile_path;
 
+    let finalrating='';
     let imagenFinal = "";
     
+    if (rating === null | rating === undefined| rating === ""){
+      finalrating='';
+    }else{
+      finalrating=`⭐ ${rating}`;
+    }
+
     if (image === null || image === undefined || image === "") {
       imagenFinal = imageActors;
     } else {
@@ -20,6 +27,7 @@ function Cards({ data }) {
     
     return (
       <div className="cards" tabIndex="0">{/*Accesibilidad : uso para personas que van con teclado se puede ver usando el*/}
+      <p className="rating">{finalrating}</p>
       <div className="images">
         <img
           src={`https://image.tmdb.org/t/p/w500${imagenFinal}`}

@@ -1,0 +1,17 @@
+.buscador {
+    display:flex;
+    min-height: 30px;
+    
+}
+
+.buscador-barra{
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;   
+    background-color: white;
+    color:black;
+}
+.buscador-barra::placeholder{
+    color: black;
+}

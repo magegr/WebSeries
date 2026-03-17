@@ -17,12 +17,17 @@
   margin-left: auto;
   margin-right: auto;
   gap: 2rem;
+  margin-bottom: 10px;
 }
 .seccion img{
   width: 100%;
   border-radius: 8px;
 }
 
+.p-paginator{
+  background:none;
+  border:none;
+} 
 
 .cargando{
   display: grid;

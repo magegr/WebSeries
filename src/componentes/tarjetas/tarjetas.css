@@ -1,6 +1,7 @@
 .cards{
   min-height: 300px;
   border-radius: 8px;
+  position:relative;
 }
 .images{
   min-width: 200px;
@@ -28,3 +29,15 @@
   outline:2px solid #ff4db8;
 }
 
+.rating{
+  position:absolute;
+  top:20px;
+  z-index: 20;
+  right:8px;
+  background:rgba(0,0,0,0.7);
+  padding:4px 8px;
+  border-radius:8px;
+  font-size:13px;
+  color:#ffd700;
+  font-weight:bold;
+}
