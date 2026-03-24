@@ -1,10 +1,9 @@
 import { Carousel } from "primereact/carousel";
 import "./carrusel.css";
 
-function Card({ data }) {
+function Card({ data, setVista }) {
 
   const productTemplate = (producto) => {
-
     const title = producto.title;
     const image = producto.poster_path;
     const name=producto.name;
@@ -12,7 +11,7 @@ function Card({ data }) {
     const rating= producto.vote_average
 
     return (
-      <div className="card">
+      <div className="card" onClick={()=>setVista("info")}>
         <p className="rating">⭐ {rating}</p>
         <img
           src={`https://image.tmdb.org/t/p/w500${image}`}

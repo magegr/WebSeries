@@ -21,7 +21,7 @@ function Index() {
     switch (vista) {
       
       case "principal":
-        return <Principal />;
+        return <Principal setVista={setVista}  setVistaActual={setVistaActual}/>;
      
       case "peliculas-populares":
       case "peliculas-cartelera":
