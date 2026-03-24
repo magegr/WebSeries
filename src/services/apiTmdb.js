@@ -98,7 +98,6 @@ export const getSeriesAccion = async () => {
 };
 
 
-//GEneros de series
 export const getSeriesMisterio = async () => {
   const res = await fetch(`${BASE_URL}/discover/tv?api_key=${API_KEY}&with_genres=9648`);
   const data = await res.json();
@@ -126,4 +125,11 @@ export const getActores = async () => {
   const res = await fetch(`${BASE_URL}/person/popular?api_key=${API_KEY}&region=ES`);
   const data = await res.json();
   return data.results;
+};
+
+//buscador
+export const getBuscador = async (page = 1 , query ) => {
+  const res = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}&include_adult=false&language=es&page=${page}`);
+  const data = await res.json();
+  return data;
 };

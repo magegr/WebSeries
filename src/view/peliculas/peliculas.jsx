@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-import {getTopPeliculas,getNowPeliculas,getUpComingPeliculas,getTopRatedPeliculas} from "../../services/apiTmdb";
+import {getTopPeliculas,getNowPeliculas,getUpComingPeliculas,getTopRatedPeliculas, getBuscador} from "../../services/apiTmdb";
 import { Paginator } from 'primereact/paginator';
 import Cards from "../../componentes/tarjetas/tarjetas";
 import '../style.css'
-function Peliculas({ tipo }) {
+function Peliculas({ tipo , query }) {
 
   const [peliculas, setPeliculas] = useState([]);
-
+  const [titulos, setTitulo]=useState('');
   const [page, setPage] = useState(1);
   const [totalresults, setTotalResults] = useState(0);
   const rows = 20;
@@ -14,33 +14,45 @@ function Peliculas({ tipo }) {
   useEffect(() => {
     const seleccionar = async () => {
       let resultado;
+      let titulo;
 
       switch (tipo) {
         case "peliculas-populares":
+          titulo='🔥 Peliculas populares';     
           resultado = await getTopPeliculas(page);
           break;
 
         case "peliculas-cartelera":
+          titulo='🎟️ Peliculas en cartelera'; 
           resultado = await getNowPeliculas(page);
           break;
 
         case "peliculas-proximamente":
+          titulo='⏳ Peliculas proximamente';
           resultado = await getUpComingPeliculas(page);
           break;
 
         case "peliculas-top":
+          titulo='⭐ Top peliculas'; 
           resultado = await getTopRatedPeliculas(page);
           break;
 
+        case "buscador":
+          titulo='Resultados de la busqueda:'; 
+          resultado = await getBuscador(page , query);
+        break;
         default:
+          titulo='🔥 Peliculas populares'; 
           resultado = await getTopPeliculas(page);
       }
+      setTitulo(titulo);
       setPeliculas(resultado.results);
       setTotalResults(resultado.total_pages*rows);
+      
     };
 
     seleccionar();
-  }, [tipo , page]); //dependencias cada vez que se modifique el dato de uno de los dos useeffect se va a reiniciar
+  }, [tipo , page , query]); //dependencias cada vez que se modifique el dato de uno de los dos useeffect se va a reiniciar
 
   const onPageChange = (event) => {
     setPage(event.page + 1); 
@@ -50,7 +62,7 @@ function Peliculas({ tipo }) {
   return (
     
     <div className="view">
-    <h2 className="titulo-seccion">🎬 Películas</h2>
+    <h2 className="titulo-seccion">{titulos}</h2>
     <div className="seccion">
       <Cards data={peliculas} />
     </div>

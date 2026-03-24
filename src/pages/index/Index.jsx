@@ -12,11 +12,12 @@ import Actors from "../../view/actores/Actors";
 function Index() {
 
   const [vista, setVista] = useState("principal");
+  const [query , setQuery] = useState("");
 
   const renderVista = () => {
 
     switch (vista) {
-
+      
       case "principal":
         return <Principal />;
      
@@ -24,10 +25,11 @@ function Index() {
       case "peliculas-cartelera":
       case "peliculas-proximamente":
       case "peliculas-top":
-        return <Peliculas tipo={vista}/>;
+      case "buscador":
+        return <Peliculas tipo={vista} query={query}/>;
 
       case "series-top":
-      case "series-airing":
+      case "series-emision":
       case "series-populares":
         return <Series tipo={vista}/>;
 
@@ -41,7 +43,7 @@ function Index() {
 
   return (
     <>
-      <Header setVista={setVista} />
+      <Header setVista={setVista} setQuery={setQuery}/>
 
       <main>
         {renderVista()}

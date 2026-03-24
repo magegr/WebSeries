@@ -29,6 +29,10 @@
   border:none;
 } 
 
+.p-component{
+  padding-top: 1.5rem !important;
+}
+
 .cargando{
   display: grid;
   grid-template-columns: repeat(5, auto);

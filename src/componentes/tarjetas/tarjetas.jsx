@@ -26,7 +26,7 @@ function Cards({ data }) {
     }
     
     return (
-      <div className="cards" tabIndex="0">{/*Accesibilidad : uso para personas que van con teclado se puede ver usando el*/}
+      <div className="cards" tabIndex="0">{/*Accesibilidad : uso para personas que van con teclado se puede ver usando el tab*/}
       <p className="rating">{finalrating}</p>
       <div className="images">
         <img

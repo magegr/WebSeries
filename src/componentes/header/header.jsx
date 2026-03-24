@@ -4,7 +4,7 @@ import 'primeicons/primeicons.css';
 import Search from "../search/search";
 import { useNavigate } from "react-router-dom";
 
-function Header({ setVista }) {
+function Header({ setVista , setQuery}) {
 
 
   
@@ -37,7 +37,7 @@ function Header({ setVista }) {
           <span>📺 Series</span>
           <div className="dropdown-menu">
             <p onClick={()=>setVista("series-populares")}>🔥 Popular</p>
-            <p onClick={()=>setVista("series-airing")}>📡 En emisión</p>
+            <p onClick={()=>setVista("series-emision")}>📡 En emisión</p>
             <p onClick={()=>setVista("series-top")}>⭐ Mejor valoradas</p>
           </div>
         </div>
@@ -49,7 +49,7 @@ function Header({ setVista }) {
         <i className="pi pi-user"></i>
       </div>
     </header>
-      <Search/>
+      <Search setQuery={setQuery} setVista={setVista}/>
       </>
   );
 }

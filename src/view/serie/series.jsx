@@ -6,7 +6,7 @@ import '../style.css'
 function Series({ tipo }) {
 
   const [series, setSeries] = useState([]);
-
+  const [titulos, setTitulo]=useState('');
   const [page, setPage] = useState(1);
   const [totalresults, setTotalResults] = useState(0);
   const rows = 20;
@@ -14,17 +14,21 @@ function Series({ tipo }) {
   useEffect(() => {
     const cargarSeries = async () => {
       let resultado;
+      let titulo;
       switch (tipo) {
 
         case "series-populares":
+          titulo='🔥 Series populare'; 
           resultado = await getTopSeries(page);
           break;
 
-        case "series-airing":
+        case "series-emision":
+          titulo='📡 Series en emision';
           resultado = await getSeriesOnAir(page);
           break;
 
         case "series-top":
+          titulo='Top series';
           resultado = await getTopRatedSeries(page);
           break;
 
