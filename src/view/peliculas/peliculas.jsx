@@ -3,8 +3,11 @@ import {getTopPeliculas,getNowPeliculas,getUpComingPeliculas,getTopRatedPelicula
 import { Paginator } from 'primereact/paginator';
 import Cards from "../../componentes/tarjetas/tarjetas";
 import '../style.css'
-function Peliculas({ tipo , query }) {
+function Peliculas({ tipo , query , setVista}) {
 
+  const vistaInfo = () => {
+    setVista("info");
+  };
   const [peliculas, setPeliculas] = useState([]);
   const [titulos, setTitulo]=useState('');
   const [page, setPage] = useState(1);
@@ -58,16 +61,15 @@ function Peliculas({ tipo , query }) {
     setPage(event.page + 1); 
   };
 
-
   return (
     
     <div className="view">
-    <h2 className="titulo-seccion">{titulos}</h2>
-    <div className="seccion">
-      <Cards data={peliculas} />
+      <h2 className="titulo-seccion">{titulos}</h2>
+      <div className="seccion" onClick={vistaInfo}>
+        <Cards data={peliculas} />
+      </div>
+      <Paginator first={(page - 1) * rows} rows={rows} totalRecords={totalresults} onPageChange={onPageChange} />
     </div>
-    <Paginator first={(page - 1) * rows} rows={rows} totalRecords={totalresults} onPageChange={onPageChange} />
-  </div>
   
   );
 }

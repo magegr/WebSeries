@@ -8,9 +8,11 @@ import Peliculas from "../../view/peliculas/peliculas";
 import Series from "../../view/serie/series"
 
 import Actors from "../../view/actores/Actors";
+import Info from "../../view/info/info";
 
 function Index() {
 
+  const [vistaActual , setVistaActual]= useState("")
   const [vista, setVista] = useState("principal");
   const [query , setQuery] = useState("");
 
@@ -26,13 +28,15 @@ function Index() {
       case "peliculas-proximamente":
       case "peliculas-top":
       case "buscador":
-        return <Peliculas tipo={vista} query={query}/>;
+        return <Peliculas setVista={setVista}  setVistaActual={setVistaActual} tipo={vista} query={query}/>;
 
       case "series-top":
       case "series-emision":
       case "series-populares":
-        return <Series tipo={vista}/>;
+        return <Series setVista={setVista} setVistaActual={setVistaActual} tipo={vista}/>;
 
+      case "info":
+        return <Info setVista={setVista} vistaActual={vistaActual}/>
       case "actores":
         return <Actors />;
 
