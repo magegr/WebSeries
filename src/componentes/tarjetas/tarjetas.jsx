@@ -1,11 +1,10 @@
 import "./tarjetas.css"
 import { useNavigate } from "react-router-dom";
-function Cards({ data}) {
-  
+function Cards({ data , tipo }) {
   const navigate = useNavigate();
 
-  const irInfo = (id) => {
-    navigate(`/info/${id}`);
+  const irInfo = (tipo , id) => {
+    navigate(`/info/${tipo}/${id}`);
   };
   
   const gridItem = (producto) => {
@@ -32,7 +31,7 @@ function Cards({ data}) {
     }
     
     return (
-      <div className="cards" tabIndex="0"  onClick={() => irInfo(producto.id)} >{/*Accesibilidad : uso para personas que van con teclado se puede ver usando el tab*/}
+      <div className="cards" tabIndex="0"  onClick={() => irInfo(tipo , producto.id)} >{/*Accesibilidad : uso para personas que van con teclado se puede ver usando el tab*/}
       <p className="rating">{finalrating}</p>
       <div className="images">
         <img
@@ -41,7 +40,7 @@ function Cards({ data}) {
         />
       </div>
       <h4>{title || name}</h4>
-    </div>
+    </div> 
     );
   };
 

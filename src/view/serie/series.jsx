@@ -51,7 +51,7 @@ function Series() {
     <div className="view">
     <h2 className="titulo-seccion">{titulo}</h2>
     <div className="seccion">
-      <Cards data={series}/>
+      <Cards data={series} tipo='tv'/>
     </div>
     <Paginator first={(page - 1) * rows} rows={rows} totalRecords={totalresults} onPageChange={onPageChange} />
   </div>

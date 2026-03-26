@@ -58,22 +58,22 @@ function Principal () {
     <>
       <h2 className="marcadores">🔥 Películas populares</h2>
       <div>
-         <Card data={peliculas} />
+         <Card data={peliculas} tipo='movie' />
       </div>
 
       <h2 className="marcadores">🎬 Próximamente</h2>
       <div>
-         <Card data={upComing}/>
+         <Card data={upComing} tipo='movie'/>
       </div>
 
       <h2 className="marcadores">📺 Series populares</h2>
       <div>
-         <Card data={series} />
+         <Card data={series} tipo='tv'/>
       </div>
 
       <h2 className="marcadores">⚡ Tendencias</h2>
       <div>
-        <Card data={trending} />
+        <Card data={trending}/>
       </div>
     </>
   );

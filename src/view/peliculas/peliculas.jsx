@@ -67,7 +67,7 @@ function Peliculas() {
     <div className="view">
       <h2 className="titulo-seccion">{titulos}</h2>
       <div className="seccion">
-        <Cards data={peliculas}/>
+        <Cards data={peliculas} tipo='movie'/>
       </div>
       <Paginator first={(page - 1) * rows} rows={rows} totalRecords={totalresults} onPageChange={onPageChange} />
     </div>

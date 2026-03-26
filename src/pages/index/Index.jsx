@@ -22,7 +22,7 @@ function Index() {
 
           <Route path="/series/:tipo" element={<Series />} />
 
-          <Route path="/info/:id" element={<Info />} />
+          <Route path="/info/:tipo/:id" element={<Info />} />
 
           <Route path="/actores" element={<Actors />} />
         </Routes>
