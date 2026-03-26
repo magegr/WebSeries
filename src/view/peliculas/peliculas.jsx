@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
+import { useParams , useLocation} from "react-router-dom";
 import {getTopPeliculas,getNowPeliculas,getUpComingPeliculas,getTopRatedPeliculas, getBuscador} from "../../services/apiTmdb";
 import { Paginator } from 'primereact/paginator';
 import Cards from "../../componentes/tarjetas/tarjetas";
 import '../style.css'
-function Peliculas({ tipo , query , setVista}) {
-
-  const vistaInfo = () => {
-    setVista("info");
-  };
+function Peliculas() {
+  const location = useLocation();
+  const query = new URLSearchParams(location.search).get("query");
+  const { tipo } = useParams();
   const [peliculas, setPeliculas] = useState([]);
   const [titulos, setTitulo]=useState('');
   const [page, setPage] = useState(1);
@@ -44,6 +44,7 @@ function Peliculas({ tipo , query , setVista}) {
           titulo='Resultados de la busqueda:'; 
           resultado = await getBuscador(page , query);
         break;
+        
         default:
           titulo='🔥 Peliculas populares'; 
           resultado = await getTopPeliculas(page);
@@ -65,8 +66,8 @@ function Peliculas({ tipo , query , setVista}) {
     
     <div className="view">
       <h2 className="titulo-seccion">{titulos}</h2>
-      <div className="seccion" onClick={vistaInfo}>
-        <Cards data={peliculas} />
+      <div className="seccion">
+        <Cards data={peliculas}/>
       </div>
       <Paginator first={(page - 1) * rows} rows={rows} totalRecords={totalresults} onPageChange={onPageChange} />
     </div>

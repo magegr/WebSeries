@@ -1,17 +1,16 @@
-import { useState, useEffect } from "react";
 import { getTopPeliculas, getUpComingPeliculas, getTopSeries, getTrendingAll } from "../../services/apiTmdb";
-
+import { useState, useEffect } from "react";
 import Card from "../../componentes/tarjetaCarrusel/tarjetas";
 import './principal.css';
 
-function Principal ({ setVista, setVistaActual }) {
+function Principal () {
 
-  setVistaActual('principal')
   const [peliculas, setPeliculas] = useState([]);
   const [upComing , setUpComing] = useState([]);
   const [series, setSeries] = useState([]);
   const [trending, setTrending] = useState([]);
   const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     const cargarPeliculas = async () => {
@@ -59,22 +58,22 @@ function Principal ({ setVista, setVistaActual }) {
     <>
       <h2 className="marcadores">🔥 Películas populares</h2>
       <div>
-        <Card data={peliculas} setVista={setVista}/>
+         <Card data={peliculas} />
       </div>
 
       <h2 className="marcadores">🎬 Próximamente</h2>
       <div>
-        <Card data={upComing} setVista={setVista} />
+         <Card data={upComing}/>
       </div>
 
       <h2 className="marcadores">📺 Series populares</h2>
       <div>
-        <Card data={series} setVista={setVista} />
+         <Card data={series} />
       </div>
 
       <h2 className="marcadores">⚡ Tendencias</h2>
       <div>
-        <Card data={trending} setVista={setVista} />
+        <Card data={trending} />
       </div>
     </>
   );

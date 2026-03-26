@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import {getTopSeries,getSeriesOnAir,getTopRatedSeries} from "../../services/apiTmdb";
 import Cards from "../../componentes/tarjetas/tarjetas";
 import { Paginator } from 'primereact/paginator';
 import '../style.css'
-function Series({ tipo  , setVista , setVistaActual}) {
-
-  const vistaInfo = () => {
-    setVista("info");
-  };
-
+function Series() {
+  const { tipo } = useParams();
   const [series, setSeries] = useState([]);
+  const [titulo , setTitulo] = useState('')
   const [page, setPage] = useState(1);
   const [totalresults, setTotalResults] = useState(0);
   const rows = 20;
@@ -17,30 +15,24 @@ function Series({ tipo  , setVista , setVistaActual}) {
   useEffect(() => {
     const cargarSeries = async () => {
       let resultado;
-      let titulo;
       switch (tipo) {
-
         case "series-populares":
-          setVistaActual(tipo)
-          titulo='🔥 Series populare'; 
+          setTitulo('🔥 Series populare'); 
           resultado = await getTopSeries(page);
           break;
 
         case "series-emision":
-          setVistaActual(tipo)
-          titulo='📡 Series en emision';
+          setTitulo('📡 Series en emision');
           resultado = await getSeriesOnAir(page);
           break;
 
         case "series-top":
-          setVistaActual(tipo)
-          titulo='Top series';
+          setTitulo(' ⭐ Top series');
           resultado = await getTopRatedSeries(page);
           break;
 
         default:
-          setVistaActual(tipo)
-          titulo='🔥 Series populare';
+          setTitulo('🔥 Series populare');
           resultado = await getTopSeries(page);
       }
      setSeries(resultado.results);
@@ -57,9 +49,9 @@ function Series({ tipo  , setVista , setVistaActual}) {
 
   return (
     <div className="view">
-    <h2 className="titulo-seccion">🎬 Series</h2>
-    <div className="seccion" onClick={vistaInfo}>
-      <Cards data={series} />
+    <h2 className="titulo-seccion">{titulo}</h2>
+    <div className="seccion">
+      <Cards data={series}/>
     </div>
     <Paginator first={(page - 1) * rows} rows={rows} totalRecords={totalresults} onPageChange={onPageChange} />
   </div>

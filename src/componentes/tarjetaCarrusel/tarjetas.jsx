@@ -1,7 +1,14 @@
 import { Carousel } from "primereact/carousel";
 import "./carrusel.css";
+import { useNavigate } from "react-router-dom";
 
-function Card({ data, setVista }) {
+function Card({data}) {
+
+  const navigate = useNavigate();
+
+  const irInfo = (id) => {
+    navigate(`/info/${id}`);
+  };
 
   const productTemplate = (producto) => {
     const title = producto.title;
@@ -10,8 +17,9 @@ function Card({ data, setVista }) {
     const anio =producto.first_air_date || producto.release_date
     const rating= producto.vote_average
 
+
     return (
-      <div className="card" onClick={()=>setVista("info")}>
+      <div className="card" onClick={() => irInfo(producto.id)}>
         <p className="rating">⭐ {rating}</p>
         <img
           src={`https://image.tmdb.org/t/p/w500${image}`}

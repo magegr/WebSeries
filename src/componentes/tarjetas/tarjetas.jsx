@@ -1,19 +1,25 @@
-import "./tarjetas.css";
+import "./tarjetas.css"
+import { useNavigate } from "react-router-dom";
+function Cards({ data}) {
+  
+  const navigate = useNavigate();
 
-function Cards({ data }) {
-
+  const irInfo = (id) => {
+    navigate(`/info/${id}`);
+  };
+  
   const gridItem = (producto) => {
-
     const title = producto.title;
     const image = producto.poster_path;
     const rating= producto.vote_average
     const name=producto.name;
     const imageActors=producto.profile_path;
 
+
     let finalrating='';
     let imagenFinal = "";
     
-    if (rating === null | rating === undefined| rating === ""){
+    if (rating === null || rating === undefined || rating === ""){
       finalrating='';
     }else{
       finalrating=`⭐ ${rating}`;
@@ -26,7 +32,7 @@ function Cards({ data }) {
     }
     
     return (
-      <div className="cards" tabIndex="0">{/*Accesibilidad : uso para personas que van con teclado se puede ver usando el tab*/}
+      <div className="cards" tabIndex="0"  onClick={() => irInfo(producto.id)} >{/*Accesibilidad : uso para personas que van con teclado se puede ver usando el tab*/}
       <p className="rating">{finalrating}</p>
       <div className="images">
         <img
@@ -42,7 +48,7 @@ function Cards({ data }) {
   return (
     <>
       {data.map((producto) => (
-        <div key={producto.id}>
+        <div key={producto.id}  >
           {gridItem(producto)}
         </div>
       ))}
