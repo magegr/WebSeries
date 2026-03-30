@@ -9,7 +9,7 @@ function Search() {
   const handleSubmit = (e) => {
     e.preventDefault();//evita que recargue el formulario al enviarse
     navigate(`/peliculas/buscador?query=${query}`);
-
+    setQuery('');
   };
 
   return (

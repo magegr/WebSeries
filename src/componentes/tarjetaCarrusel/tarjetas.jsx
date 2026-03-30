@@ -2,12 +2,12 @@ import { Carousel } from "primereact/carousel";
 import "./carrusel.css";
 import { useNavigate } from "react-router-dom";
 
-function Card({data}) {
+function Card({data , tipo}) {
 
   const navigate = useNavigate();
 
-  const irInfo = (id) => {
-    navigate(`/info/${id}`);
+  const irInfo = (tipo , id) => {
+    navigate(`/info/${tipo}/${id}`);
   };
 
   const productTemplate = (producto) => {
@@ -16,10 +16,11 @@ function Card({data}) {
     const name=producto.name;
     const anio =producto.first_air_date || producto.release_date
     const rating= producto.vote_average
-
+    
+    let tipoFinal = producto.title ? 'movie' : 'tv';//ternario es como -> if(producto.title)existe??? {tipoFinal=movie}else{tipoFinal=tv}
 
     return (
-      <div className="card" onClick={() => irInfo(producto.id)}>
+      <div className="card" onClick={() => irInfo(tipoFinal , producto.id)}>
         <p className="rating">⭐ {rating}</p>
         <img
           src={`https://image.tmdb.org/t/p/w500${image}`}

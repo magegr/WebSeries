@@ -46,14 +46,14 @@ export const getTopSeries = async (page = 1) => {
 
 //Series en emision
 export const getSeriesOnAir = async (page = 1) => {
-  const res = await fetch(`${BASE_URL}/tv/on_the_air?api_key=${API_KEY}&language=es-ES&page=${page}`);
+  const res = await fetch(`${BASE_URL}/tv/on_the_air?api_key=${API_KEY}&language=es-ES&region=ES&page=${page}`);
   const data = await res.json();
   return data;
 };
 
 //Top series
 export const getTopRatedSeries = async (page = 1) => {
-  const res = await fetch(`${BASE_URL}/tv/top_rated?api_key=${API_KEY}&language=es-ES&page=${page}`);
+  const res = await fetch(`${BASE_URL}/tv/top_rated?api_key=${API_KEY}&language=es-ES&region=ES&page=${page}`);
   const data = await res.json();
   return data;
 };
@@ -73,10 +73,26 @@ export const getBuscador = async (page = 1 , query ) => {
   return data;
 };
 
-//Por ID
+//Info por ID
 
 export const getInfoId = async (tipo , id)=>{
   const res = await fetch(`${BASE_URL}/${tipo}/${id}?api_key=${API_KEY}&language=es-ES&include_adult=false`);
+  const data = await res.json();
+  return data;
+}
+
+//edad para ver pelicula 
+
+export const getCertificacion = async (tipo , id)=>{
+  const res = await fetch(`${BASE_URL}/${tipo}/${id}/release_dates?api_key=${API_KEY}&language=es-ES&include_adult=false`);
+  const data = await res.json();
+  return data;
+}
+
+
+//viseos
+export const getVideo = async (tipo , id)=>{
+  const res = await fetch(`${BASE_URL}/${tipo}/${id}/videos?api_key=${API_KEY}&language=es-ES&include_adult=false`);
   const data = await res.json();
   return data;
 }

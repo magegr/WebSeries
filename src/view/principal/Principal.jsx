@@ -71,9 +71,9 @@ function Principal () {
          <Card data={series} tipo='tv'/>
       </div>
 
-      <h2 className="marcadores">⚡ Tendencias</h2>
+      <h2 className="marcadores" >⚡ Tendencias</h2>
       <div>
-        <Card data={trending}/>
+        <Card data={trending} tipo= 'tv' />
       </div>
     </>
   );
