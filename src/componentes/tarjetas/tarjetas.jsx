@@ -7,12 +7,12 @@ function Cards({ data , tipo }) {
     navigate(`/info/${tipo}/${id}`);
   };
   
-  const gridItem = (producto) => {
-    const title = producto.title;
-    const image = producto.poster_path;
-    const rating= producto.vote_average
-    const name=producto.name;
-    const imageActors=producto.profile_path;
+  const CardItem = (item) => {
+    const title = item.title;
+    const image = item.poster_path;
+    const rating= item.vote_average
+    const name=item.name;
+    const imageActors=item.profile_path;
 
 
     let finalrating='';
@@ -31,7 +31,7 @@ function Cards({ data , tipo }) {
     }
     
     return (
-      <div className="cards" tabIndex="0"  onClick={() => irInfo(tipo , producto.id)} >{/*Accesibilidad : uso para personas que van con teclado se puede ver usando el tab*/}
+      <div className="cards" tabIndex="0"  onClick={() => irInfo(tipo , item.id)} >{/*Accesibilidad : uso para personas que van con teclado se puede ver usando el tab*/}
       <p className="rating">{finalrating}</p>
       <div className="images">
         <img
@@ -46,9 +46,9 @@ function Cards({ data , tipo }) {
 
   return (
     <>
-      {data.map((producto) => (
-        <div key={producto.id}  >
-          {gridItem(producto)}
+      {data.map((item) => (
+        <div key={item.id}  >
+          {CardItem(item)}
         </div>
       ))}
    </>

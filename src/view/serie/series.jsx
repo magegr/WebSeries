@@ -17,12 +17,12 @@ function Series() {
       let resultado;
       switch (tipo) {
         case "series-populares":
-          setTitulo('🔥 Series populare'); 
+          setTitulo('🔥 Series populares'); 
           resultado = await getTopSeries(page);
           break;
 
         case "series-emision":
-          setTitulo('📡 Series en emision');
+          setTitulo('📡 Series en emisión');
           resultado = await getSeriesOnAir(page);
           break;
 
