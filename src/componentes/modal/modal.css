@@ -6,16 +6,6 @@
 .showmodal {
   visibility: visible;
   z-index: 3;
-  display: flex; 
-  justify-content: center;
-  align-items: center;
-}
-
-.video {
-  width: 100%;
-  max-width: 800px;
-  height: 400px;
-  border-radius: 10px;
 }
 
  .trailer{

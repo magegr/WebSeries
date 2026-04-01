@@ -11,33 +11,34 @@ function Card({data , tipo}) {
   };
 
   const CarruselItems = (item) => {
-    const title = item.title;
-    const image = item.poster_path;
-    const name=item.name;
-    const anio =item.first_air_date || item.release_date
-    const rating= item.vote_average
-    
-    let tipoFinal = item.title ? 'movie' : 'tv';//ternario es como -> if(datos.title)existe??? {tipoFinal=movie}else{tipoFinal=tv}
+   
+      const title = item.title;
+      const image = item.poster_path;
+      const name=item.name;
+      const anio =item.first_air_date || item.release_date
+      const rating= item.vote_average
+      
+      let tipoFinal = item.title ? 'movie' : 'tv';//ternario es como -> if(datos.title)existe??? {tipoFinal=movie}else{tipoFinal=tv}
 
-    return (
-      <div className="card" onClick={() => irInfo(tipoFinal , item.id)}>
-        <p className="rating">⭐ {rating}</p>
-        <img
-          src={`https://image.tmdb.org/t/p/w500${image}`}
-          alt={title}
-        />
-        <h3>{title || name}</h3>
-        <p>{anio}</p>
-      </div>
-    );
-  };
+      return (
+        <div className="card" onClick={() => irInfo(tipoFinal , item.id)}>
+          <p className="rating">⭐ {rating}</p>
+          <img
+            src={`https://image.tmdb.org/t/p/w500${image}`}
+            alt={title}
+          />
+          <h3>{title || name}</h3>
+          <p>{anio}</p>
+        </div>
+      );   
+  }
 
   return (
-    <Carousel className="carrusel"
+    <Carousel
       value={data}
       numVisible={6}
       numScroll={3}
-      itemTemplate={CarruselItems}
+      itemTemplate={ CarruselItems}
       circular
     />
   );

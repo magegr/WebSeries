@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { getInfoId , getVideo } from "../../services/apiTmdb";
+import { getInfoId , getVideo , getCertificacion , getRecomendaciones } from "../../services/apiTmdb";
 import { useState, useEffect } from "react";
+import Card from "../../componentes/tarjetaCarrusel/tarjetas";
 import Modal from "../../componentes/modal/modal"
 import './info.css'
 
@@ -9,22 +10,44 @@ function Info() {
   const navigate = useNavigate();
   const [info, setInfo] = useState(null);
   const [video , setVideo]= useState(null);
-  const [certificado , setCertificado] = useState(null)
-  
+  const [clasificaciones, setClasificacion] = useState(null)
+  const [recomendaciones , setRecomendaciones] = useState(null)
+
 
   useEffect(() => {
     const informacion = async () => {
       try {
         const data = await getInfoId(tipo, id);
         setInfo(data);
+
         const videos = await getVideo(tipo , id);
-        setVideo(videos.results);
+        const españa = videos.results.find(resultado => resultado.iso_3166_1 === "ES");
+        let key = null;
+        key=españa.key;
+        console.log(key)
+        setVideo(key);
+
+
+        const clasificacion = await getCertificacion(tipo , id)
+        const espana = clasificacion.results.find(resultado => resultado.iso_3166_1 === "ES");
+        let certificacionES = null;
+        if (tipo === "tv") {
+          certificacionES = espana?.rating || null;
+        } else {
+          certificacionES = espana?.release_dates?.[0]?.certification || null;
+        }
+
+        setClasificacion(certificacionES);
+
+        const recomendaciones = await getRecomendaciones( tipo , id )
+        setRecomendaciones(recomendaciones.results)
+
       } catch (error) {
         console.error("Error al cargar la info:", error);
       }
     };
     informacion();
-  }, [tipo, id]);
+  }, [tipo, id , video]);
  
   
   const volver = () => {
@@ -41,7 +64,8 @@ function Info() {
   const duracion = info.runtime ? `${Math.floor(info.runtime / 60)}h ${info.runtime % 60}min`: null;
   const temporada=info.number_of_seasons;
   const imageFondo = info.backdrop_path;
-  const url = ' ';
+  
+
 
   return (
     <>
@@ -60,7 +84,11 @@ function Info() {
         <div className="info">
           <div className="titulos">
             <h1>{titulo}</h1>
-            <p>clasificacion </p>
+          {clasificaciones ? (
+            <div className="square">
+              <p>{clasificaciones}</p>
+            </div>
+          ) : null}
            
           </div>
           <div className="generos">
@@ -75,12 +103,12 @@ function Info() {
             <h2>Descripción</h2>
             <p>{descripcion}</p>
           </div>
-          <Modal url={url}/>
-          <div className="masInfo">
-            <h2>Más información</h2>
-          </div>
+          <Modal video={video}/>
         </div>
         <div className="imagen">Imagenes</div>
+      </div>
+      <div className="carrusel">
+         <Card data={recomendaciones} tipo='recomendaciones' />
       </div>
     </div>
     </>

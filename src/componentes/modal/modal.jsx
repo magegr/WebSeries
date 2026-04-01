@@ -1,7 +1,8 @@
 import { useState } from "react";
+import ReactPlayer from 'react-player'
 import './Modal.css';
 
-function Modal({url}) {
+function Modal({video}) {
     const [clase, setClase]=useState('modal')
 
     const showModal=() => {
@@ -16,11 +17,12 @@ function Modal({url}) {
         
             {clase === 'modal' ? (<button className="trailer" onClick={showModal}>Ver Trailer</button>) : (<button className="trailer" onClick={closeModal}>Cerrar</button>)}
             <div className= {clase}>
-                <iframe className="video"
+               <ReactPlayer 
+                    style={{ display: 'block', width: '200%', height: '600px' }}
                     allowFullScreen
-                    src={url}
+                    src={`https://www.youtube.com/watch?v=${video}`}
                 >
-                </iframe>
+                </ReactPlayer>
             </div>
         </>
     )

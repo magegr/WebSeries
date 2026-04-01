@@ -33,6 +33,7 @@
 }
 
 .info{
+    max-width: 70%;
     padding: 2rem;
     flex:1;
 }
@@ -49,4 +50,20 @@
 
 .descripcion{
     margin-top: 1rem;
+}
+
+.square{
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+}
+.carrusel{
+    position: relative;
+    z-index: 3;
+    padding: 2rem;
+}
+.video{
+    
 }

@@ -84,7 +84,8 @@ export const getInfoId = async (tipo , id)=>{
 //edad para ver pelicula 
 
 export const getCertificacion = async (tipo , id)=>{
-  const res = await fetch(`${BASE_URL}/${tipo}/${id}/release_dates?api_key=${API_KEY}&language=es-ES&include_adult=false`);
+  const endpoint = tipo === "movie"? `movie/${id}/release_dates`: `tv/${id}/content_ratings`;
+  const res = await fetch(`${BASE_URL}/${endpoint}?api_key=${API_KEY}&language=es-ES&include_adult=false`);
   const data = await res.json();
   return data;
 }
@@ -93,6 +94,14 @@ export const getCertificacion = async (tipo , id)=>{
 //viseos
 export const getVideo = async (tipo , id)=>{
   const res = await fetch(`${BASE_URL}/${tipo}/${id}/videos?api_key=${API_KEY}&language=es-ES&include_adult=false`);
+  const data = await res.json();
+  return data;
+}
+
+//recomendaciones series / pelicculas
+export const getRecomendaciones = async ( tipo , id) => {
+  const recomendacion = tipo === 'tv'?`/tv/${id}/recommendations`:`/movie/${id}/similar`
+  const res = await fetch(`${BASE_URL}${recomendacion}?api_key=${API_KEY}&language=es-ES`);
   const data = await res.json();
   return data;
 }
