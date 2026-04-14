@@ -1,161 +1,109 @@
 # 🎬 Series Explorer
 
-**Series Explorer** es una aplicación web desarrollada con **React y Vite** que permite explorar información sobre **películas, series y actores** utilizando la API de **The Movie Database (TMDB)**.
+Aplicación web de cine sirve para ver información sobre películas, series y actores usando la API de The Movie Database (TMDB).
 
-La aplicación consume datos desde la API y los muestra dinámicamente mediante tarjetas visuales. Los usuarios pueden navegar entre diferentes categorías de películas y series desde la barra de navegación.
 
----
-# Tecnologías utilizadas
+# 📋 Requisitos
 
-Este proyecto está desarrollado utilizando:
+Antes de ejecutar esto necesitas tener instalado:
 
-* **React**
-* **Vite**
-* **JavaScript (ES6+)**
-* **CSS3**
-* **Fetch API**
-* **TMDB API**
+- Node.js  
+- npm  
 
----
-
-#  Requisitos previos
-
-Antes de ejecutar el proyecto asegúrate de tener instalado:
-
-* **Node.js**
-* **npm**
-
-Puedes comprobarlo ejecutando:
+Puedes comprobarlo con:
 
 ```bash
 node -v
 npm -v
 ```
+# 📦 Instalación
 
----
-
-#  Instalación
-
-Clona el repositorio y después instala las dependencias:
-
+Clonas el proyecto e instalas dependencias:
 ```bash
 npm install
 ```
+# ▶️ Ejecutar el proyecto
 
----
-
-#  Ejecutar el proyecto
-
-Este proyecto utiliza **Vite**. Para iniciar el servidor de desarrollo ejecuta:
-
+Para arrancarlo en local:
 ```bash
 npm run dev
 ```
+Y ya te saldrá la URL en consola para abrirlo en el navegador.
 
-Vite mostrará en la terminal la URL local donde podrás abrir la aplicación en el navegador.
+# 🔑 Variables de entorno
 
----
+Para que funcione la API de TMDB necesitas una key.
 
-#  Variables de entorno
+Pasos:
 
-Para poder realizar peticiones a la API de TMDB necesitas una **API Key**.
+Crearte una cuenta en TMDB
+Sacar tu API Key
+Crear un archivo .env en la raíz del proyecto
 
-1. Crea una cuenta en **The Movie Database**.
-2. Obtén una **API Key** desde el panel de desarrollador.
-3. Crea un archivo `.env` en la raíz del proyecto:
-
-```
+Y dentro poner:
+```bash
 VITE_TMDB_API_KEY=tu_api_key_aqui
 ```
 
-Vite permite acceder a variables de entorno en el frontend siempre que comiencen con `VITE_`.
+# 🔐 Login falso (JSON)
 
----
+Para el login he simulado el inicio de sesión usando un archivo database.json.
 
-#  Estructura del proyecto
+Ahí están los usuarios guardados y se hace una comprobación simple para validar el login.
 
-```text
-src
-├─ pages
-│  ├─ index
-│  │  ├─ Index.jsx
-│  │  └─ index.css
-│  └─ login
-│     ├─ Login.jsx
-│     └─ login.css
-│
-├─ services
-│  └─ apiTmdb.js
-│
-├─ view
-│  ├─ actores
-│  │  └─ Actors.jsx
-│  │
-│  ├─ peliculas
-│  │  ├─ Accion.jsx
-│  │  ├─ Ficcion.jsx
-│  │  ├─ Miedo.jsx
-│  │  └─ Romance.jsx
-│  │
-│  ├─ series
-│  │  ├─ Accion.jsx
-│  │  ├─ Ficcion.jsx
-│  │  ├─ Miedo.jsx
-│  │  └─ Romance.jsx
-│  │
-│  └─ principal
-│     ├─ Principal.jsx
-│     └─ principal.css
+
+# 📁 Estructura del proyecto
+
+Más o menos lo tengo organizado así:
 ```
+src/
+│
+├── componentes/   → componentes reutilizables
+│
+├── pages/         → páginas principales (index, login)
+│   ├── index/
+│   └── login/
+│
+├── services/      → llamadas a la API
+│
+├── view/          → vistas principales de la app
+│   ├── actores/
+│   ├── info/
+│   ├── peliculas/
+│   ├── principal/
+│   └── serie/
+│
+├── App.jsx
+├── main.jsx
+└── App.css
+```
+# 🧭 Cómo está organizado
 
-### Organización
+- pages → pantallas principales como login o inicio
+- view → donde están las vistas de cada sección (pelis, series, actores…)
+- services → aquí están las llamadas a la API
+- componentes → cosas reutilizables como tarjetas, etc.
+- App.jsx → donde se maneja todo
 
-* **pages** → páginas principales (index, login)
-* **services** → llamadas a APIs externas
-* **view** → vistas de la aplicación
-* **components** → componentes reutilizables de interfaz
 
----
+# 🎥 Qué se puede hacer en la app
+- Ver películas
+- Ver series
+- Ver actores
+- Entrar a detalles de cada contenido
+- Navegar por categorías
 
-#  Navegación por categorías
+Todo eso se alimenta directamente de TMDB.
 
-Desde la barra de navegación el usuario puede explorar contenido filtrado por género.
+# 🌍 API
 
-### Películas
+Uso la API de The Movie Database (TMDB) para sacar toda la info:
 
-* Acción
-* Ciencia ficción
-* Terror
-* Romance
+- Películas
+- Series
+- Actores
+- Popularidad
+- Series en emisión
 
-### Series
-
-* Acción
-* Ciencia ficción
-* Terror
-* Romance
-
-Cada categoría realiza una petición específica a la API de TMDB para obtener el contenido correspondiente.
-
----
-
-#  API utilizada
-
-Este proyecto utiliza la API de **The Movie Database (TMDB)**.
-
-Permite obtener información sobre:
-
-* Películas
-* Series
-* Actores
-* Contenido popular
-* Series en emisión
-
-Documentación oficial:
-
+Link:
 https://developer.themoviedb.org/docs/getting-started
-
----
-## Licencia
-
-Proyecto desarrollado con fines educativos utilizando la API de TMDB.
