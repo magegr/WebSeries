@@ -23,8 +23,10 @@ Puedes comprobarlo con:
 node -v
 npm -v
 ```
->[!IMPORTANT] ## Instalacion
+> ***Importante***  Instalacion
 Clonas el proyecto e instalas dependencias:
 ```bash
 npm install
 ```
+
+> 📝 **NOTA:** El login está simulado con `database.json`; no hay autenticación real.
